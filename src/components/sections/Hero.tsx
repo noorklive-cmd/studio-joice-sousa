@@ -13,7 +13,7 @@ export function Hero() {
       className="mx-auto max-w-7xl px-6 pb-24 pt-32 md:px-10 md:pb-32 md:pt-40"
     >
       <div className="grid grid-cols-1 gap-16 lg:grid-cols-12 lg:gap-12">
-        <div className="flex flex-col lg:col-span-7 lg:pt-8">
+        <div className="flex flex-col lg:col-span-7">
           <p className="mb-6 font-sans text-[11px] uppercase tracking-[0.3em] text-champagne">
             <span aria-hidden="true">— </span>
             {hero.kicker}

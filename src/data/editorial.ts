@@ -25,7 +25,7 @@ export const hero = {
     after: "com você.",
   },
   description:
-    "Cada projeto começa pela preservação milimétrica da saúde do seu fio. Distribuição calculada para tração zero, mechas posicionadas uma a uma e acabamentos indetectáveis — comprimento e volume que acompanham o seu movimento natural.",
+    "Preservação milimétrica da saúde do fio, tração zero e acabamentos indetectáveis. Mechas posicionadas uma a uma para acompanhar o seu movimento natural.",
   primaryCta: {
     label: "Quero meu Mega Hair",
     message:
