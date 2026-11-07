@@ -9,7 +9,7 @@ export const navigation: NavigationLink[] = [
   { label: "Filosofia", href: "#filosofia" },
   { label: "Técnicas", href: "#tecnicas" },
   { label: "Valores", href: "#valores" },
-  { label: "Contato", href: "#contato" },
+  { label: "Agendar", href: "#agendar" },
 ];
 
 export const brand = {

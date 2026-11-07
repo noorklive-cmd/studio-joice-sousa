@@ -24,6 +24,30 @@ export function buildWhatsAppUrl(
   return `${baseUrl}?text=${encodedMessage}`;
 }
 
+export interface BookingMessageParams {
+  greeting: string;
+  objective: string;
+  answers: { label: string; value: string }[];
+  closing: string;
+}
+
+export function buildBookingMessage({
+  greeting,
+  objective,
+  answers,
+  closing,
+}: BookingMessageParams): string {
+  const lines = [greeting, "", objective];
+
+  if (answers.length > 0) {
+    lines.push("", ...answers.map(({ label, value }) => `${label}: ${value}.`));
+  }
+
+  lines.push("", closing);
+
+  return lines.join("\n");
+}
+
 export function buildQuoteMessage({
   technique,
   objective,
