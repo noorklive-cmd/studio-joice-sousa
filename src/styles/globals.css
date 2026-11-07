@@ -4,6 +4,7 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
 /* =========================================
    RESET
    ========================================= */
@@ -23,13 +24,7 @@ body {
   margin: 0;
   min-width: 320px;
 
-  background:
-    radial-gradient(
-      circle at top,
-      rgba(224, 169, 109, 0.035),
-      transparent 35rem
-    ),
-    var(--color-obsidian);
+  background: var(--color-obsidian);
 
   color: var(--color-ivory);
 
@@ -182,6 +177,8 @@ select:focus {
   background: var(--color-champagne);
 }
 
+}
+
 /* =========================================
    UTILITY CLASSES
    ========================================= */
@@ -207,11 +204,17 @@ select:focus {
     0 0 40px var(--color-champagne-glow);
 }
 
+/* Warm studio light is only a fallback behind the editorial photograph. */
+.hero-portrait {
+  background: radial-gradient(ellipse at 70% 25%, #3a2b21, #141414 65%);
+}
+
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }

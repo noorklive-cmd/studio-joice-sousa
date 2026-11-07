@@ -1,4 +1,4 @@
-const WHATSAPP_NUMBER = "5511980345487";
+import { studio } from "../data/studio";
 
 const WHATSAPP_BASE_URL = "https://wa.me";
 
@@ -11,7 +11,7 @@ export interface QuoteMessageParams {
 export function buildWhatsAppUrl(
   message?: string,
 ): string {
-  const baseUrl = `${WHATSAPP_BASE_URL}/${WHATSAPP_NUMBER}`;
+  const baseUrl = `${WHATSAPP_BASE_URL}/${studio.contact.whatsapp.raw}`;
 
   if (!message?.trim()) {
     return baseUrl;

@@ -5,7 +5,7 @@ export function Positioning() {
     <section
       id="filosofia"
       aria-labelledby="positioning-title"
-      className="mx-auto max-w-7xl scroll-mt-20 px-6 py-24 md:px-10 md:py-32"
+      className="mx-auto max-w-7xl scroll-mt-24 px-6 py-24 md:px-10 md:py-32"
     >
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-10">
         <div className="lg:col-span-3">
@@ -30,19 +30,19 @@ export function Positioning() {
 
       <div className="my-16 border-t border-white/[0.08]" aria-hidden="true" />
 
-      <ol className="grid grid-cols-1 gap-14 md:grid-cols-3 md:gap-10 lg:pl-[25%]">
+      <ol className="grid grid-cols-1 gap-14 md:grid-cols-3 md:gap-12">
         {positioning.pillars.map((pillar) => (
-          <li key={pillar.number} className="flex flex-col">
+          <li key={pillar.number} className="flex flex-col items-start">
             <span
               aria-hidden="true"
               className="mb-4 font-display text-2xl text-champagne/60"
             >
               {pillar.number}
             </span>
-            <h3 className="font-display text-2xl font-normal text-ivory">
+            <h3 className="max-w-xs font-display text-2xl font-normal text-ivory">
               {pillar.title}
             </h3>
-            <p className="mt-4 font-sans text-sm font-light leading-relaxed text-muted">
+            <p className="mt-4 max-w-sm font-sans text-sm font-light leading-relaxed text-muted">
               {pillar.description}
             </p>
           </li>

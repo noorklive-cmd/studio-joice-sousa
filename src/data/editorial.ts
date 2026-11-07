@@ -9,7 +9,7 @@ export const navigation: NavigationLink[] = [
   { label: "Filosofia", href: "#filosofia" },
   { label: "Técnicas", href: "#tecnicas" },
   { label: "Valores", href: "#valores" },
-  { label: "Agendar", href: "#agendar" },
+  { label: "Contato", href: "#contato" },
 ];
 
 export const brand = {
@@ -33,7 +33,7 @@ export const hero = {
   },
   secondaryCta: {
     label: "Explorar Técnicas",
-    href: "#filosofia",
+    href: "#tecnicas",
   },
   image: {
     src: "/images/hero-editorial.png",

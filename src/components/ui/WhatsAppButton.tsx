@@ -1,3 +1,4 @@
+import { studio } from "../../data/studio";
 import { scheduleCta } from "../../data/editorial";
 import { buildWhatsAppUrl } from "../../lib/whatsapp";
 
@@ -7,8 +8,8 @@ export function WhatsAppButton() {
       href={buildWhatsAppUrl(scheduleCta.message)}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="Conversar com o Studio Joice Sousa no WhatsApp"
-      className="fixed bottom-6 right-6 z-50 rounded-full border border-champagne/40 bg-obsidian p-3.5 text-champagne shadow-2xl transition-all duration-300 ease-luxury hover:scale-105 hover:border-champagne md:bottom-8 md:right-8"
+      aria-label={`Conversar com ${studio.name} no WhatsApp (abre em nova aba)`}
+      className="fixed bottom-6 right-6 z-50 rounded-full border border-champagne/40 bg-obsidian p-3.5 text-champagne shadow-xl transition-all duration-300 ease-luxury motion-safe:hover:scale-105 hover:border-champagne md:bottom-8 md:right-8"
     >
       <svg
         viewBox="0 0 24 24"

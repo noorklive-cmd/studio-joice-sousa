@@ -2,7 +2,7 @@ import type { AnchorHTMLAttributes, ReactNode } from "react";
 
 type ButtonVariant = "primary" | "outline" | "link";
 
-interface ButtonProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
+export interface ButtonProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   href: string;
   variant?: ButtonVariant;
   external?: boolean;
@@ -24,18 +24,17 @@ export function Button({
   external = false,
   className,
   children,
+  target,
+  rel,
   ...rest
 }: ButtonProps) {
-  const externalProps = external
-    ? { target: "_blank", rel: "noopener noreferrer" }
-    : {};
-
   return (
     <a
       href={href}
-      className={[variantClasses[variant], className].filter(Boolean).join(" ")}
-      {...externalProps}
       {...rest}
+      target={external ? "_blank" : target}
+      rel={external || target === "_blank" ? `noopener noreferrer ${rel ?? ""}`.trim() : rel}
+      className={["font-sans motion-reduce:transition-none", variantClasses[variant], className].filter(Boolean).join(" ")}
     >
       {children}
     </a>
