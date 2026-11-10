@@ -3069,7 +3069,7 @@
 
               <a
                 class="small-button"
-                href="https://wa.me/5511980345487?text=Ol%C3%A1%2C%20Joice%21%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20um%20hor%C3%A1rio."
+                href="https://wa.me/5511980345487?text=Ol%C3%A1%2C%20Joice%21%20Gostaria%20de%20agendar%20um%20hor%C3%A1rio."
                 target="_blank"
                 rel="noopener"
               >
@@ -3161,34 +3161,8 @@
   updateComparison();
 
 
-  /* WHATSAPP + ORIGEM DA VISITA
-     Use ?origem=instagram (ou utm_source=instagram) no link da bio:
-     a mensagem sai com "(via Instagram)". A origem fica salva na sessão. */
-
+  /* WHATSAPP */
   const WA = "https://wa.me/5511980345487?text=";
-
-  const source = (() => {
-    const names = { instagram: "Instagram", ig: "Instagram", google: "Google", facebook: "Facebook", fb: "Facebook", tiktok: "TikTok", whatsapp: "WhatsApp" };
-    try {
-      const params = new URLSearchParams(location.search);
-      const raw = (params.get("origem") || params.get("utm_source") || params.get("ref") || "").trim().toLowerCase();
-      if (raw) sessionStorage.setItem("origem", names[raw] || raw.charAt(0).toUpperCase() + raw.slice(1));
-      return sessionStorage.getItem("origem") || "";
-    } catch (e) { return ""; }
-  })();
-
-  const tag = source ? ` (via ${source})` : "";
-
-  if (tag) {
-    document.querySelectorAll('a[href^="https://wa.me/"]').forEach(a => {
-      const url = new URL(a.href);
-      const text = url.searchParams.get("text");
-      if (text) {
-        url.searchParams.set("text", text + tag);
-        a.href = url.toString();
-      }
-    });
-  }
 
   /* QUESTIONÁRIO DE ORÇAMENTO */
 
@@ -3233,7 +3207,7 @@
       .filter(Boolean);
 
     const message =
-      `Olá, Joice! Vim pelo site${tag}. ${goal} Gostaria de um orçamento e de saber qual técnica você recomenda para o meu caso.` +
+      `Olá, Joice! ${goal} Gostaria de um orçamento e de saber qual técnica você recomenda para o meu caso.` +
       (answers.length ? `\n${answers.join("\n")}` : "");
 
     window.open(WA + encodeURIComponent(message), "_blank", "noopener");
