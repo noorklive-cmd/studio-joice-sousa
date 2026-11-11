@@ -1405,7 +1405,7 @@
       }
 
       .location-grid {
-        grid-template-columns: 1.35fr 1fr;
+        grid-template-columns: 1fr;
       }
 
       .map-card {
@@ -2985,89 +2985,6 @@
 
         </a>
 
-        <div class="location-side">
-
-          <div class="location-card tilt-card reveal-on-scroll" data-max-tilt="3.8" style="transition-delay: .08s">
-
-            <span class="tilt-sheen" aria-hidden="true"></span>
-
-            <span class="eyebrow">
-              Como chegar
-            </span>
-
-            <h3>
-              Do seu jeito
-            </h3>
-
-            <p>
-              Copie o endereço para enviar a alguém ou abra a rota direto no Waze.
-            </p>
-
-            <div class="location-actions">
-
-              <button
-                type="button"
-                class="small-button"
-                id="copyAddress"
-              >
-                Copiar endereço
-              </button>
-
-              <a
-                class="small-button"
-                href="https://waze.com/ul?q=Rua%20Tamuat%C3%A1%2C%20354%2C%20S%C3%A3o%20Paulo%20SP&navigate=yes"
-                target="_blank"
-                rel="noopener"
-              >
-                Waze ↗
-              </a>
-
-            </div>
-
-          </div>
-
-          <div class="location-card tilt-card reveal-on-scroll" data-max-tilt="3.8" style="transition-delay: .18s">
-
-            <span class="tilt-sheen" aria-hidden="true"></span>
-
-            <span class="eyebrow">
-              Atendimento
-            </span>
-
-            <h3>
-              Terça a sábado
-            </h3>
-
-            <p>
-              10h às 19h, com horário agendado.
-            </p>
-
-            <div class="location-actions">
-
-              <a
-                class="small-button"
-                href="https://www.instagram.com/studiojoicesousa/"
-                target="_blank"
-                rel="noopener"
-              >
-                Instagram ↗
-              </a>
-
-              <a
-                class="small-button"
-                href="https://wa.me/5511980345487?text=Ol%C3%A1%2C%20Joice%21%20Gostaria%20de%20agendar%20um%20hor%C3%A1rio."
-                target="_blank"
-                rel="noopener"
-              >
-                WhatsApp ↗
-              </a>
-
-            </div>
-
-          </div>
-
-        </div>
-
       </div>
 
     </div>
@@ -3292,37 +3209,6 @@
     } catch {}
 
   })();
-
-
-  /* COPIAR ENDEREÇO */
-
-  document
-    .getElementById("copyAddress")
-    .addEventListener("click", async () => {
-
-      const address =
-        "Rua Tamuatá, 354, São João Clímaco, São Paulo - SP, CEP 04232-000";
-
-      const button = document.getElementById("copyAddress");
-        if (!button.dataset.label) button.dataset.label = button.textContent.trim();
-        let ok = false;
-        try {
-          await navigator.clipboard.writeText(address);
-          ok = true;
-        } catch {
-          const field = Object.assign(document.createElement("textarea"), { value: address });
-          field.setAttribute("readonly", "");
-          field.style.cssText = "position:fixed;opacity:0;pointer-events:none";
-          document.body.appendChild(field);
-          field.select();
-          try { ok = document.execCommand("copy"); } catch {}
-          field.remove();
-        }
-        button.textContent = ok ? "Endereço copiado ✓" : address;
-        clearTimeout(button._t);
-        button._t = setTimeout(() => { button.textContent = button.dataset.label; }, ok ? 1800 : 4000);
-
-    });
 
 
   /* EFEITOS VISUAIS ENRIQUECIDOS & MICRO-INCLINAÇÕES SUTIS (TILT + AMBIENT LIGHT) */
