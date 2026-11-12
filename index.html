@@ -63,7 +63,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap"
     rel="stylesheet"
   />
 
@@ -104,7 +104,7 @@
         var(--bg);
 
       color: var(--text);
-      font-family: "DM Sans", sans-serif;
+      font-family: "Inter", sans-serif;
       line-height: 1.55;
     }
 
@@ -172,13 +172,13 @@
     .header-button {
       border: 1px solid rgba(215,181,106,.35);
 
-      padding: 9px 15px;
+      padding: 10px 16px;
 
       border-radius: 999px;
 
       color: var(--gold-light);
 
-      font-size: 10px;
+      font-size: 12px;
       font-weight: 700;
 
       letter-spacing: .08em;
@@ -374,14 +374,9 @@
         0 18px 50px rgba(215,181,106,.22);
     }
 
-    /* brilho que atravessa o botão */
     .button-primary::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(110deg, transparent 30%, rgba(255,255,255,.55) 50%, transparent 70%);
-      transform: translateX(-120%);
-      animation: sweep 4.5s ease-in-out 1.6s infinite;
+      content: none;
+      animation: none;
     }
 
     .button-secondary {
@@ -538,10 +533,10 @@
 
       color: #e7e0d4;
 
-      font-size: 10px;
+      font-size: 12px;
       font-weight: 600;
 
-      letter-spacing: .05em;
+      letter-spacing: .03em;
 
       box-shadow: 0 18px 40px rgba(0,0,0,.4);
     }
@@ -596,7 +591,7 @@
 
     .seal text {
       fill: var(--gold-light);
-      font-family: "DM Sans", sans-serif;
+      font-family: "Inter", sans-serif;
       font-size: 8.6px;
       font-weight: 700;
       text-transform: uppercase;
@@ -1318,9 +1313,9 @@
       margin-top: 18px;
       padding-top: 14px;
       border-top: 1px solid var(--line);
-      color: #65625d;
-      font-size: 10px;
-      letter-spacing: .08em;
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: .04em;
     }
 
     .credits b {
@@ -1331,10 +1326,8 @@
 
     .copyright {
       margin-top: 5px;
-
-      color: #65625d;
-
-      font-size: 10px;
+      color: var(--muted);
+      font-size: 12px;
     }
 
     /* DESKTOP */
@@ -2044,7 +2037,7 @@
     .price-list li:last-child { border-bottom: 0; }
     .price-list em { display: block; font-style: normal; color: #858179; font-size: 11px; margin-top: 2px; }
     .price-list b { flex-shrink: 0; color: var(--gold-light); font-family: "Playfair Display", serif; font-weight: 500; font-size: 16px; white-space: nowrap; }
-    .price-list b small { font-family: "DM Sans", sans-serif; font-size: 10px; color: var(--muted); margin-right: 3px; }
+    .price-list b small { font-family: "Inter", sans-serif; font-size: 10px; color: var(--muted); margin-right: 3px; }
 
     .note {
       margin-top: 14px;
@@ -2093,9 +2086,9 @@
       border: 1px solid rgba(215,181,106,.35);
       border-radius: 8px;
       color: var(--gold-light);
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: .1em;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .04em;
       text-transform: uppercase;
     }
 
@@ -2241,7 +2234,7 @@
       outline: 2px solid var(--gold);
       outline-offset: 3px;
     }
-  
+
 
     @media (max-width: 560px) {
       .map-info {
@@ -2255,10 +2248,374 @@
       .map-info p { font-size: 11px; }
       .map-cta { padding: 10px 13px; }
     }
-  </style>
+
+/* ===== REDESIGN STUDIO JOICE SOUSA: BASE E HERO ===== */
+:root {
+  --bg: #0D0D0D;
+  --surface: #141414;
+  --surface-2: #1C1917;
+  --line: #262626;
+  --text: #F5F5F5;
+  --muted: #B8B2A9;
+  --gold: #E0A96D;
+  --gold-light: #E0A96D;
+  --radius: 16px;
+}
+
+body {
+  background: var(--bg);
+  font-family: "Inter", sans-serif;
+}
+
+body::before {
+  display: none;
+}
+
+.skip-link {
+  position: absolute;
+  z-index: 100;
+  top: 8px;
+  left: 8px;
+  padding: 12px 16px;
+  color: #0D0D0D;
+  background: var(--gold);
+  border-radius: 4px;
+  transform: translateY(-150%);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.hero {
+  padding: 64px 0 40px;
+}
+
+.hero::before {
+  display: none;
+}
+
+.hero::after {
+  opacity: .45;
+}
+
+.hero-grid {
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
+  align-items: center;
+  gap: 48px;
+}
+
+.hero h1 {
+  max-width: 760px;
+  margin-top: 0;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: clamp(42px, 7vw, 88px);
+  line-height: .98;
+  letter-spacing: -.045em;
+}
+
+.hero h1 .line {
+  overflow: visible;
+  padding-bottom: .04em;
+}
+
+.hero h1 .line > span {
+  animation: rise .8s cubic-bezier(.16, 1, .3, 1) both;
+}
+
+.hero h1 .hero-accent {
+  color: var(--gold);
+  font-style: normal;
+  font-weight: 600;
+}
+
+.hero-description {
+  max-width: 490px;
+  margin-top: 26px;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.hero-actions {
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.button {
+  min-height: 52px;
+  border-radius: 6px;
+}
+
+.button-primary {
+  color: #17130D;
+  background: var(--gold);
+  box-shadow: none;
+}
+
+.button-primary::after {
+  display: none;
+}
+
+.button-primary:hover {
+  background: #EDBC86;
+  box-shadow: none;
+}
+
+.button-secondary {
+  border-radius: 6px;
+}
+
+.hero-visual {
+  width: min(100%, 480px);
+  padding: 0;
+}
+
+.hero-visual::before {
+  inset: 12px -12px -12px 12px;
+  border-color: rgba(224,169,109,.35);
+}
+
+.hero-arch {
+  border-radius: 220px 220px 8px 8px;
+  border: 0;
+  box-shadow: 0 24px 64px rgba(0,0,0,.32);
+}
+
+.image-caption {
+  right: -8px;
+  bottom: 20px;
+  border-radius: 6px;
+  background: #141414;
+  border-color: #262626;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+@media (max-width: 759px) {
+  .hero {
+    padding: 46px 0 32px;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 38px;
+  }
+
+  .hero h1 {
+    font-size: clamp(42px, 11vw, 66px);
+  }
+
+  .hero-description {
+    font-size: 15px;
+  }
+
+  .hero-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .hero-actions .button {
+    width: 100%;
+  }
+
+  .hero-visual {
+    width: min(88%, 420px);
+    margin: 0 auto;
+  }
+
+  .image-caption {
+    right: -10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero h1 .line > span {
+    animation: none;
+  }
+}
+
+
+
+
+/* LOTE 2: acabamento tipográfico dos títulos e comparador */
+section#resultado h2.split-title,
+section[data-index="02"] h2.split-title,
+section#metodo h2.split-title {
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+}
+
+section#resultado h2.split-title .accent,
+section[data-index="02"] h2.split-title .accent,
+section#metodo h2.split-title .accent {
+  background: none;
+  -webkit-background-clip: initial;
+  background-clip: initial;
+  color: var(--gold);
+  font-style: normal;
+  animation: none;
+}
+
+#resultado .comparison .label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .04em;
+}
+
+/* ===== LOTE 2: DIFERENCIAIS E TÉCNICAS ===== */
+
+/* Diferenciais em composição editorial */
+section:not(.hero) .cards.feature-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  overflow: visible;
+  padding: 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.feature-list .feature-item {
+  position: relative;
+  min-width: 0;
+  padding: 26px 24px 28px 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  overflow: visible;
+  transform: none !important;
+  box-shadow: none;
+}
+
+.feature-list .feature-item + .feature-item {
+  padding-left: 24px;
+  border-left: 1px solid var(--line);
+}
+
+.feature-list .feature-item::after {
+  display: none;
+}
+
+.feature-list .feature-item h3 {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  font-size: clamp(18px, 2vw, 22px);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -.025em;
+}
+
+.feature-list .feature-item p {
+  max-width: 34ch;
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* Seletor de técnicas */
+.method .pills {
+  gap: 10px;
+}
+
+.method button.pill {
+  min-height: 44px;
+  padding: 11px 15px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #141414;
+  color: var(--muted);
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.35;
+  transition: background .2s ease, border-color .2s ease, color .2s ease;
+}
+
+.method button.pill:hover {
+  border-color: var(--gold);
+  color: var(--text);
+}
+
+.method button.pill[aria-pressed="true"] {
+  border-color: var(--gold);
+  background: rgba(224,169,109,.12);
+  color: var(--gold);
+}
+
+.method button.pill:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+.method .tech-detail {
+  margin-top: 18px;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+.method .tech-detail h3 {
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.method .tech-detail .tech-desc {
+  max-width: 55ch;
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.method .tech-facts dt {
+  font-size: 11px;
+  letter-spacing: .04em;
+}
+
+.method .tech-facts b {
+  font-size: 16px;
+}
+
+@media (max-width: 759px) {
+  section:not(.hero) .cards.feature-list {
+    grid-template-columns: 1fr;
+    grid-auto-flow: row;
+    grid-auto-columns: auto;
+    overflow: visible;
+    scroll-snap-type: none;
+  }
+
+  .feature-list .feature-item,
+  .feature-list .feature-item + .feature-item {
+    padding: 22px 0;
+    border-left: 0;
+  }
+
+  .feature-list .feature-item + .feature-item {
+    border-top: 1px solid var(--line);
+  }
+
+  .method .tech-detail {
+    padding: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .method button.pill {
+    transition: none;
+  }
+}
+
+</style>
 </head>
 
 <body>
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
 <div class="ambient-glow" aria-hidden="true"></div>
 
@@ -2270,128 +2627,56 @@
     </a>
 
     <a href="#agendar" class="header-button">
-      Agendar avaliação
+      Solicitar avaliação
     </a>
 
   </div>
 </header>
 
-<main>
+<main id="conteudo">
 
   <!-- HERO -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <h1 aria-label="A beleza do resultado. A precisão do que não aparece.">
+        <span class="line"><span>A beleza do</span></span>
+        <span class="line"><span class="hero-accent">resultado.</span></span>
+        <span class="line"><span>A precisão do</span></span>
+        <span class="line"><span class="hero-accent">que não aparece.</span></span>
+      </h1>
 
-  <section class="hero">
+      <p class="hero-description reveal reveal-2">
+        Mega Hair personalizado, com atenção à integração dos fios e ao acabamento.
+      </p>
 
-    <div class="container hero-grid">
-
-      <div>
-
-        <span class="eyebrow reveal reveal-1">
-          Alta Costura Capilar · São Paulo
-        </span>
-
-        <h1 aria-label="Mega Hair que você não precisa esconder.">
-          <span class="line" aria-hidden="true"><span>Mega Hair</span></span>
-          <span class="line" aria-hidden="true"><span>que você</span></span>
-          <span class="line" aria-hidden="true"><span><em>não precisa</em></span></span>
-          <span class="line" aria-hidden="true"><span><em>esconder.</em></span></span>
-        </h1>
-
-        <p class="hero-description reveal reveal-2">
-          Escolha de técnica, quantidade e acabamento para combinar com o seu cabelo e o resultado que você procura.
-        </p>
-
-        <div class="hero-actions reveal reveal-3">
-
-          <a
-            class="button button-primary"
-            href="#agendar"
-          >
-            Fazer meu orçamento ↓
-          </a>
-
-          <a
-            class="button button-secondary"
-            href="#resultado"
-          >
-            Ver antes &amp; depois
-          </a>
-
-        </div>
-
-        <div class="stats reveal reveal-4">
-
-          <div class="stat">
-            <strong>05</strong>
-            <span>Técnicas</span>
-          </div>
-
-          <div class="stat">
-            <strong>R$300</strong>
-            <span>A partir de</span>
-          </div>
-
-          <div class="stat">
-            <strong>1:1</strong>
-            <span>Atendimento</span>
-          </div>
-
-        </div>
-
-      </div>
-
-      <div class="hero-visual reveal reveal-5">
-
-        <div class="hero-arch">
-          <!-- Retrato da Joice: substitua assets/joice.jpg para trocar -->
-          <img
-            src="/assets/joice.jpg"
-            alt="Joice Sousa, especialista em Mega Hair"
-            fetchpriority="high"
-          />
-        </div>
-
-        <div class="seal" aria-hidden="true">
-          <svg viewBox="0 0 100 100">
-            <defs>
-              <path id="sealPath" d="M50,50 m-39,0 a39,39 0 1,1 78,0 a39,39 0 1,1 -78,0" />
-            </defs>
-            <text>
-              <textPath href="#sealPath" textLength="243" lengthAdjust="spacing">Alta Costura · Engenharia Capilar · </textPath>
-            </text>
-          </svg>
-          <b>JS</b>
-        </div>
-
-        <div class="image-caption">
-          <strong>Joice Sousa</strong>
-          Especialista em Mega Hair
-        </div>
-
-      </div>
-
-    </div>
-
-    <div class="marquee" aria-hidden="true">
-      <div class="marquee-track">
-        <span>Mega Hair invisível</span>
-        <span>Queratina</span>
-        <span>Ponto Americano</span>
-        <span>Micro Cápsula</span>
-        <span>Nano Cápsula</span>
-        <span>Fita Adesiva</span>
-        <span>Mega Hair invisível</span>
-        <span>Queratina</span>
-        <span>Ponto Americano</span>
-        <span>Micro Cápsula</span>
-        <span>Nano Cápsula</span>
-        <span>Fita Adesiva</span>
+      <div class="hero-actions reveal reveal-3">
+        <a class="button button-primary" href="#agendar">
+          Solicitar avaliação
+        </a>
+        <a class="button button-secondary" href="#metodo">
+          Conhecer as técnicas
+        </a>
       </div>
     </div>
 
-  </section>
+    <div class="hero-visual reveal reveal-5">
+      <div class="hero-arch">
+        <img
+          src="/assets/joice.jpg"
+          alt="Joice Sousa, especialista em Mega Hair"
+          fetchpriority="high"
+        />
+      </div>
+      <div class="image-caption">
+        <strong>Joice Sousa</strong>
+        Especialista em Mega Hair
+      </div>
+    </div>
+  </div>
+</section>
 
-  <!-- RESULTADO -->
+<!-- RESULTADO -->
 
   <section id="resultado" data-index="01">
 
@@ -2472,9 +2757,7 @@
 
       <div class="section-head reveal-on-scroll">
 
-        <span class="eyebrow">
-          Por que Studio Joice
-        </span>
+
 
         <h2 class="split-title">
           <span class="h-line"><span>O resultado começa</span></span>
@@ -2483,15 +2766,13 @@
 
       </div>
 
-      <div class="cards">
+      <div class="cards feature-list">
 
-        <article class="card tilt-card reveal-on-scroll" data-max-tilt="4.5" style="transition-delay: .05s">
+        <article class="card feature-item reveal-on-scroll">
 
-          <span class="tilt-sheen" aria-hidden="true"></span>
 
-          <div class="card-number">
-            01
-          </div>
+
+
 
           <h3>
             Peso na medida
@@ -2503,13 +2784,11 @@
 
         </article>
 
-        <article class="card tilt-card reveal-on-scroll" data-max-tilt="4.5" style="transition-delay: .15s">
+        <article class="card feature-item reveal-on-scroll">
 
-          <span class="tilt-sheen" aria-hidden="true"></span>
 
-          <div class="card-number">
-            02
-          </div>
+
+
 
           <h3>
             Acabamento discreto
@@ -2521,13 +2800,11 @@
 
         </article>
 
-        <article class="card tilt-card reveal-on-scroll" data-max-tilt="4.5" style="transition-delay: .25s">
+        <article class="card feature-item reveal-on-scroll">
 
-          <span class="tilt-sheen" aria-hidden="true"></span>
 
-          <div class="card-number">
-            03
-          </div>
+
+
 
           <h3>
             Escolha para cada cabelo
@@ -2553,9 +2830,7 @@
 
       <div>
 
-        <span class="eyebrow">
-          Alta precisão
-        </span>
+
 
         <h2 class="split-title">
           <span class="h-line"><span>Conheça as técnicas.</span></span>
