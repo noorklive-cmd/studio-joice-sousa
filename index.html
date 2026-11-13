@@ -2256,6 +2256,123 @@
       .map-cta { padding: 10px 13px; }
     }
   </style>
+<style id="four-results-overrides">
+.comparison-wrap {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 30px;
+  align-items: start;
+}
+.comparison-wrap::before { display: none !important; }
+.comparison-card {
+  min-width: 0;
+  padding: 18px;
+  border: 1px solid rgba(120, 105, 90, .22);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, .38);
+}
+.comparison-card-head { margin-bottom: 15px; }
+.comparison-card-head > span {
+  display: block;
+  margin-bottom: 7px;
+  font-size: 10px;
+  letter-spacing: .18em;
+  opacity: .65;
+}
+.comparison-card-head h3 {
+  margin: 0;
+  font-size: clamp(17px, 2vw, 23px);
+  line-height: 1.25;
+}
+.comparison-card .comparison {
+  position: relative;
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  isolation: isolate;
+  clip-path: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+  touch-action: pan-y;
+}
+.comparison-card .comparison img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: none !important;
+}
+.comparison-card .comparison img.after {
+  clip-path: inset(0 0 0 50%);
+}
+.comparison-card .comparison-line {
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  height: auto;
+  background: #fff;
+  pointer-events: none;
+}
+.comparison-card .comparison-handle {
+  position: absolute;
+  z-index: 4;
+  top: 50%;
+  left: 50%;
+  pointer-events: none;
+}
+.comparison-label {
+  position: absolute;
+  z-index: 5;
+  top: 14px;
+  padding: 6px 9px;
+  color: #fff;
+  background: rgba(0, 0, 0, .48);
+  font-size: 9px;
+  letter-spacing: .13em;
+  pointer-events: none;
+}
+.comparison-card .label-before { left: 12px; }
+.comparison-card .label-after { right: 12px; }
+.comparison-card .comparison input[type="range"] {
+  position: absolute;
+  z-index: 8;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: ew-resize;
+  touch-action: pan-y;
+}
+.comparison-stage { margin: 14px 0 0; }
+.comparison-stage img {
+  display: block;
+  width: 100%;
+  max-height: 360px;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+.comparison-stage figcaption {
+  margin-top: 8px;
+  font-size: 10px;
+  letter-spacing: .16em;
+  opacity: .7;
+}
+@media (max-width: 700px) {
+  .comparison-wrap {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+  .comparison-card { padding: 13px; }
+}
+</style>
 </head>
 
 <body>
@@ -2415,50 +2532,74 @@
       </div>
 
       <div class="comparison-wrap">
-
-      <div class="comparison reveal-on-scroll" style="transition-delay: .12s">
-
-        <!-- Antes/depois: substitua assets/antes.jpg e assets/depois.jpg para trocar -->
-        <img
-          src="/assets/antes.jpg"
-          alt="Antes da transformação"
-          loading="lazy"
-        />
-
-        <img
-          id="afterImage"
-          class="after"
-          src="/assets/depois.jpg"
-          alt="Depois da transformação"
-          loading="lazy"
-        />
-
-        <span class="label label-before">
-          Antes
-        </span>
-
-        <span class="label label-after">
-          Depois
-        </span>
-
-        <div class="comparison-line"></div>
-
-        <div class="comparison-handle">
-          ↔
-        </div>
-
-        <input
-          id="comparisonRange"
-          type="range"
-          min="0"
-          max="100"
-          value="50"
-          aria-label="Comparar antes e depois"
-        />
-
+<article class="comparison-card">
+      <header class="comparison-card-head">
+        <span>CASO 01</span>
+        <h3>Transformação capilar</h3>
+      </header>
+      <div class="comparison reveal-on-scroll" data-comparison>
+        <img src="/assets/antes-01.jpg" alt="Antes da transformação, caso 1" loading="lazy">
+        <img class="after" src="/assets/depois-03.jpg" alt="Depois da transformação, caso 1" loading="lazy">
+        <span class="comparison-label label-before">ANTES</span>
+        <span class="comparison-label label-after">DEPOIS</span>
+        <span class="comparison-line"></span>
+        <span class="comparison-handle"></span>
+        <input type="range" min="0" max="100" value="50" aria-label="Comparar antes e depois do caso 1">
       </div>
+      <figure class="comparison-stage">
+        <img src="/assets/durante-02.jpg" alt="Etapa durante a transformação, caso 1" loading="lazy">
+        <figcaption>DURANTE</figcaption>
+      </figure>
+    </article>
 
+<article class="comparison-card">
+      <header class="comparison-card-head">
+        <span>CASO 02</span>
+        <h3>Transformação capilar</h3>
+      </header>
+      <div class="comparison reveal-on-scroll" data-comparison>
+        <img src="/assets/antes-001.jpg" alt="Antes da transformação, caso 2" loading="lazy">
+        <img class="after" src="/assets/depois-002.jpg" alt="Depois da transformação, caso 2" loading="lazy">
+        <span class="comparison-label label-before">ANTES</span>
+        <span class="comparison-label label-after">DEPOIS</span>
+        <span class="comparison-line"></span>
+        <span class="comparison-handle"></span>
+        <input type="range" min="0" max="100" value="50" aria-label="Comparar antes e depois do caso 2">
       </div>
+    </article>
+
+<article class="comparison-card">
+      <header class="comparison-card-head">
+        <span>CASO 03</span>
+        <h3>Transformação capilar</h3>
+      </header>
+      <div class="comparison reveal-on-scroll" data-comparison>
+        <img src="/assets/antes-0001.jpg" alt="Antes da transformação, caso 3" loading="lazy">
+        <img class="after" src="/assets/depois-0002.jpg" alt="Depois da transformação, caso 3" loading="lazy">
+        <span class="comparison-label label-before">ANTES</span>
+        <span class="comparison-label label-after">DEPOIS</span>
+        <span class="comparison-line"></span>
+        <span class="comparison-handle"></span>
+        <input type="range" min="0" max="100" value="50" aria-label="Comparar antes e depois do caso 3">
+      </div>
+    </article>
+
+<article class="comparison-card">
+      <header class="comparison-card-head">
+        <span>CASO 04</span>
+        <h3>Transformação capilar</h3>
+      </header>
+      <div class="comparison reveal-on-scroll" data-comparison>
+        <img src="/assets/antes.jpg" alt="Antes da transformação, caso 4" loading="lazy">
+        <img class="after" src="/assets/depois.jpg" alt="Depois da transformação, caso 4" loading="lazy">
+        <span class="comparison-label label-before">ANTES</span>
+        <span class="comparison-label label-after">DEPOIS</span>
+        <span class="comparison-line"></span>
+        <span class="comparison-handle"></span>
+        <input type="range" min="0" max="100" value="50" aria-label="Comparar antes e depois do caso 4">
+      </div>
+    </article>
+</div>
 
     </div>
 
@@ -3026,45 +3167,29 @@
     new Date().getFullYear();
 
 
-  /* ANTES / DEPOIS */
+  /* ANTES / DEPOIS: comparadores independentes */
 
-  const range =
-    document.getElementById("comparisonRange");
+document.querySelectorAll("[data-comparison]").forEach((comparison) => {
+  const range = comparison.querySelector('input[type="range"]');
+  const afterImage = comparison.querySelector(".after");
+  const line = comparison.querySelector(".comparison-line");
+  const handle = comparison.querySelector(".comparison-handle");
 
-  const afterImage =
-    document.getElementById("afterImage");
+  if (!range || !afterImage || !line || !handle) return;
 
-  const line =
-    document.querySelector(".comparison-line");
-
-  const handle =
-    document.querySelector(".comparison-handle");
-
-
-  function updateComparison(override) {
-
-    const value =
-      typeof override === "number" ? override : range.value;
-
-    afterImage.style.clipPath =
-      `inset(0 0 0 ${value}%)`;
-
+  const updateComparison = () => {
+    const value = Math.max(0, Math.min(100, Number(range.value)));
+    afterImage.style.clipPath = `inset(0 0 0 ${value}%)`;
     line.style.left = `${value}%`;
-
     handle.style.left = `${value}%`;
+  };
 
-  }
-
-
-  range.addEventListener(
-    "input",
-    () => updateComparison()
-  );
-
+  range.addEventListener("input", updateComparison);
   updateComparison();
+});
 
 
-  /* WHATSAPP */
+/* WHATSAPP */
   const WA = "https://wa.me/5511980345487?text=";
 
   /* QUESTIONÁRIO DE ORÇAMENTO */
@@ -3341,58 +3466,6 @@
       document.querySelectorAll("main > section").forEach(el => screenObserver.observe(el));
     } else {
       document.querySelectorAll("main > section").forEach(el => el.classList.add("in-screen"));
-    }
-
-
-    /* 1d. ANTES/DEPOIS: um aceno discreto do controle ao aparecer */
-
-    const comparison =
-      document.querySelector(".comparison");
-
-    if (comparison && range && "IntersectionObserver" in window) {
-
-      let touched = false;
-
-      ["pointerdown", "input", "keydown"].forEach(type => {
-        comparison.addEventListener(type, () => { touched = true; }, { passive: true });
-      });
-
-      const hintObserver = new IntersectionObserver((entries) => {
-
-        if (!entries[0].isIntersecting) return;
-
-        hintObserver.disconnect();
-
-        setTimeout(() => {
-
-          if (touched) return;
-
-          const start = performance.now();
-          const duration = 2200;
-
-          function step(now) {
-
-            if (touched) return;
-
-            const t = Math.min(1, (now - start) / duration);
-
-            const eased =
-              t >= 1 ? 50 : 50 + Math.sin(t * Math.PI * 2) * 12 * (1 - t * .35);
-
-            updateComparison(eased);
-
-            if (t < 1) requestAnimationFrame(step);
-
-          }
-
-          requestAnimationFrame(step);
-
-        }, 1100);
-
-      }, { threshold: 0.5 });
-
-      hintObserver.observe(comparison);
-
     }
 
 
