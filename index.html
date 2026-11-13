@@ -2267,9 +2267,9 @@
 .comparison-card {
   min-width: 0;
   padding: 18px;
-  border: 1px solid rgba(120, 105, 90, .22);
-  border-radius: 4px;
-  background: rgba(255, 255, 255, .38);
+  border: 1px solid rgba(215, 181, 106, .22);
+  border-radius: 22px;
+  background: linear-gradient(145deg, rgba(255,255,255,.045), rgba(255,255,255,.015));
 }
 .comparison-card-head { margin-bottom: 15px; }
 .comparison-card-head > span {
@@ -2325,7 +2325,20 @@
   z-index: 4;
   top: 50%;
   left: 50%;
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border: 2px solid rgba(255,255,255,.92);
+  border-radius: 50%;
+  background: rgba(11,11,10,.78);
+  color: #fff;
   pointer-events: none;
+}
+.comparison-card .comparison-handle::before {
+  content: "↔";
+  font-size: 21px;
+  line-height: 1;
 }
 .comparison-label {
   position: absolute;
@@ -2350,20 +2363,6 @@
   opacity: 0;
   cursor: ew-resize;
   touch-action: pan-y;
-}
-.comparison-stage { margin: 14px 0 0; }
-.comparison-stage img {
-  display: block;
-  width: 100%;
-  max-height: 360px;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-}
-.comparison-stage figcaption {
-  margin-top: 8px;
-  font-size: 10px;
-  letter-spacing: .16em;
-  opacity: .7;
 }
 @media (max-width: 700px) {
   .comparison-wrap {
@@ -2546,10 +2545,6 @@
         <span class="comparison-handle"></span>
         <input type="range" min="0" max="100" value="50" aria-label="Comparar antes e depois do caso 1">
       </div>
-      <figure class="comparison-stage">
-        <img src="/assets/durante-02.jpg" alt="Etapa durante a transformação, caso 1" loading="lazy">
-        <figcaption>DURANTE</figcaption>
-      </figure>
     </article>
 
 <article class="comparison-card">
@@ -2574,29 +2569,13 @@
         <h3>Transformação capilar</h3>
       </header>
       <div class="comparison reveal-on-scroll" data-comparison>
-        <img src="/assets/antes-0001.jpg" alt="Antes da transformação, caso 3" loading="lazy">
-        <img class="after" src="/assets/depois-0002.jpg" alt="Depois da transformação, caso 3" loading="lazy">
+        <img src="/assets/antes.jpg" alt="Antes da transformação, caso 3" loading="lazy">
+        <img class="after" src="/assets/depois.jpg" alt="Depois da transformação, caso 3" loading="lazy">
         <span class="comparison-label label-before">ANTES</span>
         <span class="comparison-label label-after">DEPOIS</span>
         <span class="comparison-line"></span>
         <span class="comparison-handle"></span>
         <input type="range" min="0" max="100" value="50" aria-label="Comparar antes e depois do caso 3">
-      </div>
-    </article>
-
-<article class="comparison-card">
-      <header class="comparison-card-head">
-        <span>CASO 04</span>
-        <h3>Transformação capilar</h3>
-      </header>
-      <div class="comparison reveal-on-scroll" data-comparison>
-        <img src="/assets/antes.jpg" alt="Antes da transformação, caso 4" loading="lazy">
-        <img class="after" src="/assets/depois.jpg" alt="Depois da transformação, caso 4" loading="lazy">
-        <span class="comparison-label label-before">ANTES</span>
-        <span class="comparison-label label-after">DEPOIS</span>
-        <span class="comparison-line"></span>
-        <span class="comparison-handle"></span>
-        <input type="range" min="0" max="100" value="50" aria-label="Comparar antes e depois do caso 4">
       </div>
     </article>
 </div>
