@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f7f7f5">
+<title>Assistente JR · Widget de demonstração</title>
+<style>
+:root{color-scheme:light;--paper:#f7f7f5;--white:#fff;--ink:#171717;--muted:#777;--line:#e6e6e3;--soft:#f1f1ef;--focus:#777}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:#f7f7f5;color:var(--ink);font:15px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+button,input{font:inherit}
+.site{min-height:100vh;position:relative;overflow:hidden}
+.site-header{height:76px;padding:0 clamp(22px,6vw,88px);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);background:#fff}
+.wordmark{font:400 17px/1 Georgia,serif;letter-spacing:.11em}.wordmark small{display:block;margin-top:7px;font:10px/1.2 Inter,system-ui,sans-serif;letter-spacing:.24em}
+.nav{display:flex;gap:26px;color:#666;font-size:12px}
+.hero{max-width:1100px;margin:0 auto;padding:clamp(70px,12vh,130px) 28px 80px;display:grid;grid-template-columns:1.05fr .95fr;gap:9vw;align-items:center}
+.hero h1{font:400 clamp(42px,6vw,76px)/1.03 Georgia,serif;letter-spacing:-.045em;margin:0 0 24px;max-width:650px}
+.hero p{max-width:440px;color:#666;font-size:15px;line-height:1.8}
+.hero-link{display:inline-flex;margin-top:24px;padding:13px 19px;background:#171717;color:#fff;text-decoration:none;font-size:12px;letter-spacing:.04em}
+.editorial-photo{height:460px;background:linear-gradient(135deg,#e4e4e1,#c9c9c5);display:grid;place-items:center;color:#666;font:italic 17px Georgia,serif}
+.caption{margin-top:13px;color:#888;font-size:10px;letter-spacing:.14em;text-transform:uppercase}
+.widget{position:fixed;right:24px;bottom:22px;z-index:50;display:flex;flex-direction:column;align-items:flex-end;gap:12px}
+.launcher{height:48px;min-width:48px;padding:0 15px;border:1px solid #202020;border-radius:999px;background:#171717;color:#fff;display:flex;align-items:center;justify-content:center;gap:10px;box-shadow:0 5px 18px #0002;cursor:pointer;transition:transform .18s ease,background .18s ease}
+.launcher:hover{transform:translateY(-2px);background:#333}
+.launcher svg{width:19px;height:19px;display:block}
+.launcher-label{font-size:12px;letter-spacing:.01em}
+.panel{width:min(370px,calc(100vw - 28px));height:min(590px,calc(100dvh - 105px));background:#fff;border:1px solid #dededb;border-radius:17px;box-shadow:0 18px 60px #0002;display:none;overflow:hidden;flex-direction:column}
+.panel.open{display:flex;animation:panel-in .2s ease-out}
+@keyframes panel-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.panel-head{padding:16px 17px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:11px}
+.jr-mark{height:34px;width:34px;border-radius:50%;display:grid;place-items:center;background:#171717;color:#fff}
+.jr-mark svg{width:17px;height:17px}
+.head-copy{min-width:0;flex:1}.head-copy strong{display:block;font:400 17px Georgia,serif}.head-copy small{font-size:10px;color:#777}
+.close{height:32px;width:32px;border:0;background:transparent;color:#666;border-radius:50%;cursor:pointer;font-size:20px}
+.close:hover{background:var(--soft)}
+.messages{padding:17px 14px 12px;display:flex;flex:1;flex-direction:column;gap:10px;overflow:auto;scrollbar-width:thin;scrollbar-color:#ccc transparent}
+.message{max-width:88%;padding:10px 12px;border-radius:13px;font-size:12px;line-height:1.6;white-space:pre-wrap}
+.message.bot{background:#f1f1ef;color:#242424;align-self:flex-start;border-bottom-left-radius:4px}
+.message.user{background:#202020;color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
+.quick{padding:0 14px 12px;display:flex;flex-wrap:wrap;gap:7px}
+.quick button{border:1px solid #d7d7d4;background:#fff;border-radius:999px;padding:7px 10px;font-size:10px;color:#444;cursor:pointer}
+.quick button:hover{border-color:#777;background:#f8f8f7}
+.composer{padding:12px;border-top:1px solid var(--line);display:flex;gap:8px}
+.composer input{min-width:0;flex:1;border:1px solid #dededb;border-radius:999px;padding:10px 13px;font-size:12px;outline:none;color:#171717;background:#fff}
+.composer input:focus{border-color:#777;box-shadow:0 0 0 2px #0000000b}
+.send{width:38px;height:38px;border:0;border-radius:50%;background:#171717;color:#fff;display:grid;place-items:center;cursor:pointer}
+.send svg{width:16px;height:16px}
+.disclaimer{padding:0 14px 11px;text-align:center;color:#888;font-size:9px}
+@media(max-width:680px){.site-header{height:66px}.nav{display:none}.hero{grid-template-columns:1fr;padding-top:76px;gap:34px}.editorial-photo{height:240px}.widget{right:14px;bottom:14px}.panel{height:min(590px,calc(100dvh - 86px))}.launcher{height:46px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<main class="site">
+<header class="site-header"><div class="wordmark">JOICE SOUSA<small>STUDIO · MEGA HAIR</small></div><nav class="nav"><span>O STUDIO</span><span>TÉCNICAS</span><span>RESULTADOS</span><span>CONTATO</span></nav></header>
+<section class="hero">
+<div><h1>Beleza que se integra. Resultado que permanece.</h1><p>Conheça as técnicas de Mega Hair do Studio Joice Sousa e encontre o caminho certo para uma avaliação profissional.</p><a class="hero-link" href="https://wa.me/5511980345487">FALAR COM O STUDIO</a></div>
+<div><div class="editorial-photo">Imagem editorial do Studio</div><div class="caption">STUDIO JOICE SOUSA · SÃO PAULO</div></div>
+</section>
+<div class="widget">
+<section class="panel" id="jr-panel" aria-label="Chat Assistente JR" aria-hidden="true">
+<header class="panel-head"><div class="jr-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11.5a7.5 7.5 0 0 1-7.5 7.5H5l1.8-3.2A7.5 7.5 0 1 1 20 11.5Z"/></svg></div><div class="head-copy"><strong>Assistente JR</strong><small>Atendimento virtual · Studio Joice Sousa</small></div><button class="close" id="jr-close" aria-label="Fechar conversa">×</button></header>
+<div class="messages" id="jr-messages" aria-live="polite"><div class="message bot">Olá! Sou o Assistente JR, assistente virtual do Studio Joice Sousa. Como posso ajudar?</div></div>
+<div class="quick" id="jr-quick"><button data-question="Quais técnicas vocês trabalham?">Técnicas</button><button data-question="Quais são os valores de aplicação?">Valores</button><button data-question="Quando faço manutenção?">Manutenção</button><button data-question="Quero solicitar uma avaliação.">Avaliação</button></div>
+<form class="composer" id="jr-form"><input id="jr-input" placeholder="Escreva sua mensagem" aria-label="Escreva sua mensagem" autocomplete="off"><button class="send" aria-label="Enviar mensagem" type="submit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg></button></form>
+<div class="disclaimer">Demonstração interativa · sem IA ou agenda conectada</div>
+</section>
+<button class="launcher" id="jr-launcher" aria-label="Abrir Assistente JR" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11.5a7.5 7.5 0 0 1-7.5 7.5H5l1.8-3.2A7.5 7.5 0 1 1 20 11.5Z"/></svg><span class="launcher-label">Assistente JR</span></button>
+</div>
+</main>
+<script>
+const panel=document.querySelector('#jr-panel'),launcher=document.querySelector('#jr-launcher'),closeButton=document.querySelector('#jr-close'),messages=document.querySelector('#jr-messages'),form=document.querySelector('#jr-form'),input=document.querySelector('#jr-input'),quick=document.querySelector('#jr-quick');
+function toggle(open){panel.classList.toggle('open',open);panel.setAttribute('aria-hidden',String(!open));launcher.setAttribute('aria-expanded',String(open));if(open)input.focus()}
+launcher.addEventListener('click',()=>toggle(!panel.classList.contains('open')));closeButton.addEventListener('click',()=>toggle(false));
+function addMessage(text,role){const node=document.createElement('div');node.className='message '+role;node.textContent=text;messages.append(node);messages.scrollTop=messages.scrollHeight}
+function answer(value){const q=value.toLocaleLowerCase('pt-BR');
+if(/técnic|tecnic|fita|tela|queratina|cápsula|capsula/.test(q))return 'O Studio trabalha com Fita Adesiva (Fita Invisível), Tela (Ponto Americano), Queratina, Micro Cápsula e Nano Cápsula. A escolha depende de uma avaliação profissional. Qual delas você gostaria de conhecer?';
+if(/valor|preço|preco|custa|aplica/.test(q))return 'Os valores publicados são de mão de obra: Fita Invisível R$ 300, Tela/Ponto Americano R$ 350 e Queratina Italiana R$ 500. O cabelo é cobrado à parte; valores precisam ser confirmados pela equipe antes do atendimento.';
+if(/manuten|prazo|retir/.test(q))return 'As referências publicadas são: Fita Adesiva, 45–60 dias; Ponto Americano, 50–70 dias; Queratina, Micro e Nano Cápsula, 60–90 dias. Qual técnica você utiliza atualmente?';
+if(/agenda|agend|avalia|horário|horario|marcar/.test(q))return 'Posso organizar seu pedido de avaliação. A disponibilidade e o agendamento são confirmados somente pela Joice ou pela equipe. Você gostaria de preparar esse pedido?';
+if(/endereço|endereco|onde fica|localização/.test(q))return 'O Studio fica na Rua Tamuatá, 354, São João Clímaco, São Paulo/SP. O atendimento publicado é de terça a sábado, das 10h às 19h.';
+if(/humano|joice|pessoa|atendente/.test(q))return 'Claro. O atendimento humano é feito pela Joice e pela equipe do Studio. Você pode falar diretamente pelo WhatsApp: +55 11 98034-5487.';
+if(/sim|quero|pedido/.test(q))return 'Perfeito. Este protótipo ainda não envia pedidos à equipe. Você pode continuar pelo WhatsApp do Studio para receber confirmação humana: https://wa.me/5511980345487';
+return 'Posso ajudar com técnicas, valores publicados, manutenção ou pedido de avaliação. Qual assunto você quer ver primeiro?'}
+function send(value){const clean=value.trim();if(!clean)return;addMessage(clean,'user');input.value='';addMessage(answer(clean),'bot')}
+form.addEventListener('submit',event=>{event.preventDefault();send(input.value)});quick.addEventListener('click',event=>{const button=event.target.closest('[data-question]');if(button)send(button.dataset.question)});
+document.addEventListener('keydown',event=>{if(event.key==='Escape'&&panel.classList.contains('open'))toggle(false)});
+</script>
+</body>
+</html>
