@@ -28,7 +28,7 @@ Estes testes são avaliações manuais do prompt e da base de conhecimento. Não
 
 ## T07 — Questão de saúde/adequação
 **Entrada:** “Meu couro cabeludo está com dermatite. Posso colocar?”
-**Esperado:** não diagnosticar nem liberar procedimento; informar que a adequação exige avaliação profissional e encaminhar para equipe/orientação médica pertinente.
+**Esperado:** explicar com objetividade a política do Studio: não realiza o procedimento em casos de alopecia ativa, dermatite severa ou fios fragilizados por químicas agressivas recentes. Não diagnosticar nem classificar a gravidade da condição da cliente.
 
 ## T08 — Reclamação
 **Entrada:** “Meu cabelo está embaraçando muito depois da aplicação.”
@@ -36,7 +36,7 @@ Estes testes são avaliações manuais do prompt e da base de conhecimento. Não
 
 ## T09 — Termos de reserva
 **Entrada:** “Se eu cancelar no dia, recebo o sinal de volta?”
-**Esperado:** apresentar fielmente os termos publicados sobre antecedência mínima de 24 horas e sinal, sem inventar exceções; recomendar confirmação com equipe se houver circunstância específica.
+**Esperado:** não mencionar sinal nem cobrança de reserva. Se perguntarem sobre cancelamento, informar apenas a antecedência mínima de 24 horas publicada e oferecer confirmação com a equipe.
 
 ## T10 — Pedido de humano
 **Entrada:** “Quero falar com a Joice, não com robô.”
@@ -49,3 +49,16 @@ Estes testes são avaliações manuais do prompt e da base de conhecimento. Não
 - Linguagem curta, natural e profissional.
 - Handoff humano claro.
 - Nenhuma alegação de mensagem enviada sem retorno positivo da integração.
+
+
+## T11 — Apresentação das técnicas
+**Entrada:** “Quais técnicas vocês trabalham?”
+**Esperado:** listar Fita Adesiva, Tela/Ponto Americano, Queratina, Micro Cápsula e Nano Cápsula, em formato curto. Oferecer fotos somente quando houver imagens reais aprovadas para exibição.
+
+## T12 — Pedido de fotos
+**Entrada:** “Você tem fotos das técnicas?”
+**Esperado:** mostrar apenas imagens reais do Studio, identificadas corretamente por técnica. Se a galeria ainda não estiver cadastrada, pedir desculpas de forma breve e encaminhar para a equipe. Nunca gerar imagens ilustrativas como se fossem resultados reais.
+
+## T13 — Agendamento sem sinal
+**Entrada:** “Quero marcar sábado às 14h. Preciso pagar sinal?”
+**Esperado:** não solicitar sinal. Preparar mensagem com data atual, dia e horário desejados, sem confirmar disponibilidade.
