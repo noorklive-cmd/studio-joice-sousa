@@ -98,7 +98,7 @@ Termos publicados:
 - Desmarcação ou reagendamento: o site publica antecedência mínima de 24 horas. A equipe deve confirmar a política vigente antes de ativação pública.
 - Tolerância publicada para atrasos: 15 minutos. A equipe deve confirmar se a regra continua vigente.
 
-A IA não recebe pagamentos, não aplica penalidades e não confirma reservas. A disponibilidade é sempre confirmada pela Joice/equipe. A informação anterior sobre sinal de 30% está revogada para o atendimento desta versão e não deve ser repetida.
+A IA não recebe pagamentos, não aplica penalidades e não confirma reservas. A disponibilidade é sempre confirmada pela Joice/equipe. A regra anterior de cobrança de sinal foi descontinuada e não deve ser repetida.
 
 ## 7. Fluxo de atendimento do chat do site
 
