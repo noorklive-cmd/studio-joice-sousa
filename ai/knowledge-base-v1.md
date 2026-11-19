@@ -1,9 +1,9 @@
-# Studio Joice AI — Base de conhecimento V1.0
+# Assistente JR — Base de conhecimento V1.1
 
 **Status:** experimental, não conectado à API e não autorizado para atendimento público.  
 **Fonte primária:** `index.html` da branch `main` do repositório `noorklive-cmd/studio-joice-sousa`.  
 **Snapshot consultado:** blob `43d4f7c296fbd6e6dfc201351e0cfc173e887b98`.  
-**Objetivo:** fornecer respostas consistentes no chat do site e encaminhar oportunidades para atendimento humano.
+**Produto de atendimento:** Assistente JR (JR = Júnior). **Marca atendida:** Studio Joice Sousa.\n**Objetivo:** fornecer respostas consistentes no chat do site e encaminhar oportunidades para atendimento humano.
 
 > Regra de publicação: os valores abaixo foram encontrados no site/repositório. Antes de ativar atendimento real, Joice deve confirmar que continuam vigentes. A IA não pode apresentar informação marcada como pendente como fato.
 
