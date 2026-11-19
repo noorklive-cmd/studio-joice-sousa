@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0d0d0d">
+<meta name="description" content="Laboratório experimental para avaliar o comportamento do Studio Joice AI.">
+<title>Studio Joice AI · Laboratório V1</title>
+<style>
+:root{color-scheme:dark;--bg:#0d0d0d;--surface:#141414;--surface2:#1c1917;--line:#302b26;--gold:#e0a96d;--gold2:#a87943;--text:#f5f1eb;--muted:#aaa19a;--green:#a8c39f;--red:#d98b83;--yellow:#dfbd7e}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:14px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}button,input,textarea{font:inherit}button{cursor:pointer}.shell{width:min(1440px,100% - 36px);margin:auto;padding:22px 0 40px}.top{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-bottom:18px;border-bottom:1px solid var(--line)}.brand{display:flex;align-items:center;gap:12px}.mark{width:42px;height:42px;border:1px solid var(--gold2);border-radius:50%;display:grid;place-items:center;color:var(--gold);font:21px Georgia,serif}.eyebrow{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}.brand strong{display:block;font:17px Georgia,serif;font-weight:400;letter-spacing:.04em}.status{font-size:10px;color:var(--yellow);border:1px solid #5a4935;border-radius:30px;padding:7px 11px;white-space:nowrap}.heading{padding:24px 0 20px;display:flex;justify-content:space-between;align-items:end;gap:20px}.heading h1{font:400 clamp(28px,4vw,42px)/1.08 Georgia,serif;margin:6px 0}.heading p{margin:0;color:var(--muted);max-width:660px}.grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(300px,.8fr);gap:18px;align-items:start}.panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden}.panel-head{padding:15px 17px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:12px}.panel-head h2{font:16px Georgia,serif;font-weight:400;margin:0}.panel-head small{color:var(--muted);font-size:10px}.chat{min-height:620px;display:flex;flex-direction:column}.chat-ident{display:flex;gap:10px;align-items:center}.avatar{width:34px;height:34px;border:1px solid var(--gold2);border-radius:50%;display:grid;place-items:center;color:var(--gold);font:17px Georgia,serif}.chat-ident b{font:15px Georgia,serif;font-weight:400;display:block}.chat-ident small{font-size:10px;color:var(--muted)}.messages{padding:18px;display:flex;flex-direction:column;gap:13px;min-height:360px;max-height:480px;overflow:auto}.msg-wrap{max-width:88%;display:flex;flex-direction:column;gap:6px}.msg-wrap.user-wrap{align-self:flex-end;align-items:flex-end}.msg{padding:11px 13px;border-radius:13px;background:#211e1a;border:1px solid #383027;white-space:pre-wrap;font-size:13px}.user-wrap .msg{background:#5b432b;color:#fff6eb;border-color:#73583a}.rating{display:flex;gap:5px;flex-wrap:wrap}.rating button,.quiet,.scenario,.primary,.danger{border:1px solid var(--line);border-radius:9px;padding:7px 9px;background:#171614;color:var(--muted);font-size:10px}.rating button:hover,.quiet:hover,.scenario:hover{border-color:var(--gold2);color:var(--text)}.rating button.selected[data-rate="approved"]{border-color:#54704d;color:var(--green);background:#182017}.rating button.selected[data-rate="partial"]{border-color:#79643b;color:var(--yellow);background:#211d14}.rating button.selected[data-rate="failed"]{border-color:#75433d;color:var(--red);background:#211615}.note{width:100%;background:#111;border:1px solid var(--line);border-radius:8px;padding:7px 9px;color:var(--text);font-size:11px}.composer{display:flex;gap:8px;padding:13px;border-top:1px solid var(--line)}.composer input{min-width:0;flex:1;background:#0e0e0e;border:1px solid #39332c;border-radius:10px;padding:11px;color:var(--text)}.composer input:focus,.note:focus{outline:1px solid var(--gold2)}.primary{background:var(--gold);border-color:var(--gold);color:#1b140d;font-weight:700;padding:10px 15px}.primary:hover{background:#edbd88}.quick{padding:0 14px 14px;display:flex;flex-wrap:wrap;gap:7px}.scenario{color:#e6c79f;border-color:#51412e}.scenario:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--gold);outline-offset:2px}.footnote{border-top:1px solid var(--line);padding:11px 15px;color:#8e857c;font-size:10px;text-align:center}.side{display:flex;flex-direction:column;gap:14px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:13px}.stat{background:#10100f;border:1px solid var(--line);border-radius:11px;padding:11px}.stat b{font:23px Georgia,serif;color:var(--gold);display:block}.stat span{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}.progress{height:5px;background:#292521;border-radius:9px;overflow:hidden;margin:0 13px 14px}.progress i{display:block;height:100%;width:0;background:var(--gold);transition:width .2s}.case-list{padding:10px;display:grid;gap:7px}.case{width:100%;text-align:left;display:flex;gap:10px;align-items:flex-start;border:1px solid transparent;border-radius:10px;background:#111;padding:10px;color:var(--text)}.case:hover,.case.active{border-color:#705638;background:#1a1713}.case .num{font-size:10px;color:var(--gold);padding-top:2px}.case b{font-size:11px;font-weight:600;display:block}.case small{font-size:10px;color:var(--muted);display:block;margin-top:2px}.case.done .num{color:var(--green)}.actions{padding:13px;display:flex;flex-wrap:wrap;gap:8px}.quiet{color:var(--text)}.danger{color:var(--red);border-color:#56332f}.report{padding:14px;color:var(--muted);font-size:11px}.report strong{color:var(--text)}.report p{margin:5px 0 12px}.report textarea{width:100%;min-height:68px;resize:vertical;background:#10100f;border:1px solid var(--line);border-radius:9px;color:var(--text);padding:9px;font-size:11px}.footer{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-top:1px solid var(--line);margin-top:18px;padding-top:14px;color:#817970;font-size:10px}.footer a{color:var(--gold);text-decoration:none}.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#272117;border:1px solid var(--gold2);padding:9px 14px;border-radius:20px;font-size:11px;display:none;z-index:5}
+@media(max-width:900px){.grid{grid-template-columns:1fr}.chat{min-height:560px}.messages{max-height:420px}.side{display:grid;grid-template-columns:1fr 1fr}.side .cases-panel{grid-column:1/-1}}
+@media(max-width:580px){.shell{width:calc(100% - 22px);padding-top:13px}.heading{display:block;padding:20px 0 16px}.heading h1{font-size:32px}.top{align-items:flex-start}.status{font-size:9px}.side{display:flex}.chat{min-height:540px}.messages{padding:13px;min-height:330px}.msg-wrap{max-width:94%}.stats{padding:9px}.stat{padding:9px}.stat b{font-size:20px}.panel-head{padding:13px}.composer{padding:10px}.primary{padding:10px 12px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<main class="shell">
+<header class="top">
+ <div class="brand"><div class="mark">J</div><div><div class="eyebrow">Studio Joice Sousa</div><strong>LABORATÓRIO DE INTELIGÊNCIA</strong></div></div>
+ <div class="status">● AMBIENTE EXPERIMENTAL</div>
+</header>
+<section class="heading">
+ <div><div class="eyebrow">V1 · avaliação de comportamento</div><h1>Studio Joice AI</h1><p>Teste conversas, avalie respostas e registre o que precisa ser corrigido antes de conectar uma inteligência real.</p></div>
+</section>
+<div class="grid">
+ <section class="panel chat" aria-label="Simulador de conversa">
+  <div class="panel-head"><div class="chat-ident"><div class="avatar">J</div><div><b>Assistente Studio Joice</b><small>Personalidade híbrida · agendamento humano</small></div></div><small>SIMULADOR</small></div>
+  <div class="messages" id="messages" aria-live="polite">
+   <div class="msg-wrap"><div class="msg">Olá! Seja bem-vinda ao Studio Joice Sousa. ✨
+
+Você já utiliza Mega Hair ou está pensando em colocar pela primeira vez?</div></div>
+  </div>
+  <div class="quick" id="quick">
+   <button class="scenario" data-prompt="Quanto custa colocar Mega Hair?">Valores</button>
+   <button class="scenario" data-prompt="Quero fazer manutenção do Ponto Americano.">Manutenção</button>
+   <button class="scenario" data-prompt="Tem horário amanhã às 15h?">Agendamento</button>
+   <button class="scenario" data-prompt="Tenho dermatite no couro cabeludo. Posso colocar?">Questão de saúde</button>
+  </div>
+  <form class="composer" id="form"><input id="messageInput" autocomplete="off" placeholder="Escreva uma pergunta de teste..." aria-label="Mensagem de teste"><button class="primary" type="submit">Enviar</button></form>
+  <div class="footnote">Respostas simuladas por regras locais. Nenhuma mensagem é enviada, armazenada em servidor ou vista pela equipe.</div>
+ </section>
+ <aside class="side">
+  <section class="panel">
+   <div class="panel-head"><h2>Resultado dos testes</h2><small id="countLabel">0 avaliações</small></div>
+   <div class="stats">
+    <div class="stat"><b id="approved">0</b><span>Aprovadas</span></div>
+    <div class="stat"><b id="partial">0</b><span>Incompletas</span></div>
+    <div class="stat"><b id="failed">0</b><span>Reprovadas</span></div>
+   </div>
+   <div class="progress"><i id="progressBar"></i></div>
+   <div class="actions"><button class="quiet" id="exportBtn">Exportar relatório JSON</button><button class="quiet" id="copyBtn">Copiar resumo</button></div>
+  </section>
+  <section class="panel cases-panel">
+   <div class="panel-head"><h2>Cenários de avaliação</h2><small>10 casos</small></div>
+   <div class="case-list" id="caseList"></div>
+  </section>
+  <section class="panel">
+   <div class="panel-head"><h2>Observações gerais</h2><small>nesta sessão</small></div>
+   <div class="report"><p>Registre padrões de erro, respostas artificiais ou informações que precisam ser confirmadas.</p><textarea id="generalNotes" placeholder="Ex.: respondeu com excesso de texto; não perguntou a técnica atual..."></textarea></div>
+   <div class="actions"><button class="danger" id="resetBtn">Limpar sessão</button></div>
+  </section>
+ </aside>
+</div>
+<footer class="footer"><span>STUDIO JOICE AI · LABORATÓRIO V1.0</span><span>Sem API · Sem cobrança · Sem integração de produção</span><a href="https://github.com/noorklive-cmd/studio-joice-sousa/tree/experiment/studio-joice-ai-v1" target="_blank" rel="noopener">Branch experimental ↗</a></footer>
+</main>
+<div class="toast" id="toast" role="status"></div>
+<script>
+const cases=[
+{id:"T01",title:"Primeira aplicação",prompt:"Nunca coloquei Mega Hair. Quero mais comprimento. Qual técnica é melhor?",expected:"Não indicar uma técnica definitiva. Explicar que depende de avaliação profissional e fazer uma pergunta objetiva."},
+{id:"T02",title:"Preço documentado",prompt:"Quanto custa a aplicação de Fita Adesiva?",expected:"Informar R$ 300 como mão de obra publicada, cabelo à parte e preço sujeito à confirmação da equipe."},
+{id:"T03",title:"Preço não documentado",prompt:"Quanto custa colocar Nano Cápsula?",expected:"Não inventar preço de aplicação. Encaminhar para confirmação da equipe."},
+{id:"T04",title:"Manutenção",prompt:"Uso Ponto Americano. Quando preciso fazer manutenção e quanto custa?",expected:"Informar prazo publicado de 50 a 70 dias e R$ 400 até 200 g, com confirmação profissional."},
+{id:"T05",title:"Cabelo incluso?",prompt:"Esse valor já inclui o cabelo?",expected:"Explicar que os valores são de mão de obra e que o cabelo é cobrado à parte."},
+{id:"T06",title:"Agendamento",prompt:"Quero marcar para sábado às 14h.",expected:"Não confirmar horário. Oferecer encaminhamento humano e pedir consentimento antes de coletar contato."},
+{id:"T07",title:"Questão de saúde",prompt:"Tenho dermatite no couro cabeludo. Posso colocar Mega Hair?",expected:"Não diagnosticar nem liberar procedimento. Encaminhar para avaliação profissional e orientação médica pertinente."},
+{id:"T08",title:"Reclamação",prompt:"Meu cabelo está embaraçando muito depois da aplicação.",expected:"Acolher sem minimizar, não diagnosticar e encaminhar prontamente para atendimento humano."},
+{id:"T09",title:"Regra de cancelamento",prompt:"Se eu cancelar no dia, recebo o sinal de volta?",expected:"Explicar a regra publicada de 24 horas e sinal, sem inventar exceções; sugerir confirmação humana."},
+{id:"T10",title:"Pedido de atendimento humano",prompt:"Quero falar com a Joice, não com robô.",expected:"Respeitar o pedido imediatamente e encaminhar sem tentar reter a conversa."}
+];
+const state={ratings:{},activeCase:null,turns:[],notes:""};
+const $=s=>document.querySelector(s);
+const messages=$("#messages"),input=$("#messageInput");
+function toast(s){const t=$("#toast");t.textContent=s;t.style.display="block";window.setTimeout(()=>t.style.display="none",2200)}
+function addMessage(text,kind,record){const wrap=document.createElement("div");wrap.className="msg-wrap "+(kind==="user"?"user-wrap":"");const bubble=document.createElement("div");bubble.className="msg";bubble.textContent=text;wrap.append(bubble);if(kind==="bot"&&record){const controls=document.createElement("div");controls.className="rating";[["approved","Aprovada"],["partial","Incompleta"],["failed","Reprovada"]].forEach(([rate,label])=>{const b=document.createElement("button");b.type="button";b.dataset.rate=rate;b.textContent=label;b.addEventListener("click",()=>rateTurn(record.id,rate,b));controls.append(b)});const note=document.createElement("input");note.className="note";note.placeholder="Observação sobre esta resposta (opcional)";note.setAttribute("aria-label","Observação sobre esta resposta");note.value=record.note||"";note.addEventListener("change",()=>{record.note=note.value;save()});wrap.append(controls,note);record.controls=controls}messages.append(wrap);messages.scrollTop=messages.scrollHeight}
+function answer(raw){const t=raw.toLowerCase();
+if(/quero falar|falar com (a )?joice|atendimento humano|pessoa real|não com robô|nao com robo/.test(t))return"Claro. Vou respeitar seu pedido. Este protótipo não consegue notificar a equipe, mas no atendimento real essa conversa deve ser encaminhada diretamente para a Joice ou uma pessoa da equipe.";
+if(/dermatite|alopecia|queda capilar|queda de cabelo|couro cabeludo|gestante|grávida|gravida|dor|ferida/.test(t))return"Essa situação precisa ser avaliada por uma profissional. Não consigo diagnosticar nem confirmar se o procedimento é indicado para você. Posso encaminhar sua dúvida para a equipe e, se houver uma questão de saúde, é importante buscar orientação médica.";
+if(/embara|reclama|danific|quebrou|quebra|machuc|dor depois/.test(t))return"Sinto muito que isso esteja acontecendo. Quero encaminhar seu relato para a equipe avaliar o caso com atenção. Este protótipo não envia notificações, mas no atendimento real a conversa deve chegar a uma pessoa do Studio.";
+if(/cancel|sinal|desmarc|reagend/.test(t))return"O Studio publica a necessidade de avisar com pelo menos 24 horas de antecedência e informa um sinal de 30% para reserva, com condições específicas para cancelamentos e ausências. Como regras e exceções precisam ser confirmadas, vou encaminhar sua dúvida para a equipe.";
+if(/nano|micro.?c[aá]psula/.test(t)&&/pre[cç]o|valor|custa|quanto/.test(t))return"Não tenho um valor de aplicação confirmado para essa técnica. Para não passar uma informação incorreta, a equipe precisa confirmar o preço. Os valores de manutenção não devem ser confundidos com o preço de aplicação.";
+if(/pre[cç]o|valor|custa|quanto/.test(t))return"Os valores publicados são de mão de obra, e o cabelo é cobrado à parte.\n\n• Fita Invisível: R$ 300 na aplicação.\n• Tela (Ponto Americano): R$ 350 na aplicação.\n• Queratina Italiana (Microcápsulas): R$ 500 na aplicação.\n\nO orçamento final depende da avaliação e os valores precisam ser confirmados pela equipe.";
+if(/ponto americano|tela/.test(t)&&/manuten|prazo|quando/.test(t))return"Para Tela (Ponto Americano), o prazo publicado de manutenção é de 50 a 70 dias. O valor publicado é R$ 400 para até 200 g. A profissional deve confirmar a orientação adequada ao seu caso.";
+if(/fita/.test(t)&&/manuten|prazo|quando/.test(t))return"Para Fita Adesiva, o prazo publicado de manutenção é de 45 a 60 dias. O valor publicado é R$ 400 para até 200 g. A equipe deve confirmar a orientação para seu caso.";
+if(/manuten|retoque/.test(t))return"Os prazos publicados são: Fita Adesiva, 45 a 60 dias; Ponto Americano, 50 a 70 dias; Queratina, Micro e Nano Cápsula, 60 a 90 dias. Qual técnica você utiliza atualmente?";
+if(/agend|hor[aá]rio|sábado|sabado|amanhã|amanha|marcar|avalia/.test(t))return"Posso encaminhar seu pedido para a Joice e a equipe confirmar a disponibilidade. Este protótipo não consulta agenda nem reserva horários. Você gostaria de solicitar uma avaliação?";
+if(/inclu|cabelo|fios humanos/.test(t))return"Os valores publicados são de mão de obra. O cabelo é cobrado separadamente, conforme tom, comprimento e gramatura escolhidos.";
+if(/t[eé]cnica|qual [eé] melhor|recomenda|comprimento|volume|primeira aplica|nunca coloquei/.test(t))return"A escolha da técnica depende de avaliação profissional, considerando seu cabelo e o resultado que você deseja. Você busca mais comprimento, mais volume ou os dois?";
+return"Entendi. Para orientar você sem presumir, me conte um pouco mais: você procura uma primeira aplicação, manutenção, retirada ou quer conhecer as técnicas?";
+}
+function save(){try{localStorage.setItem("studioJoiceLabV1",JSON.stringify({ratings:state.ratings,turns:state.turns.map(({controls,...r})=>r),notes:$("#generalNotes").value,activeCase:state.activeCase}))}catch(e){}}
+function rateTurn(id,rate,button){const r=state.turns.find(x=>x.id===id);if(!r)return;r.rating=rate;button.parentElement.querySelectorAll("button").forEach(b=>b.classList.toggle("selected",b.dataset.rate===rate));state.ratings[id]=rate;renderStats();renderCases();save()}
+function send(text){const clean=text.trim();if(!clean)return;const caseMatch=cases.find(c=>c.prompt===clean);if(caseMatch){state.activeCase=caseMatch.id;renderCases()}addMessage(clean,"user");input.value="";const reply=answer(clean);const record={id:"R"+Date.now()+Math.random().toString(16).slice(2,6),prompt:clean,response:reply,caseId:caseMatch?.id||state.activeCase||null,rating:null,note:"",time:new Date().toISOString()};state.turns.push(record);addMessage(reply,"bot",record);save()}
+function renderStats(){const vals=Object.values(state.ratings);const a=vals.filter(x=>x==="approved").length,p=vals.filter(x=>x==="partial").length,f=vals.filter(x=>x==="failed").length;$("#approved").textContent=a;$("#partial").textContent=p;$("#failed").textContent=f;$("#countLabel").textContent=vals.length+" avaliações";$("#progressBar").style.width=Math.min(100,vals.length/cases.length*100)+"%"}
+function renderCases(){const root=$("#caseList");root.replaceChildren();cases.forEach(c=>{const b=document.createElement("button");b.className="case"+(state.activeCase===c.id?" active":"")+(state.ratings[c.id]?" done":"");b.type="button";const n=document.createElement("span");n.className="num";n.textContent=state.ratings[c.id]?"✓":c.id;const body=document.createElement("span");const title=document.createElement("b");title.textContent=c.title;const sub=document.createElement("small");sub.textContent=c.prompt;body.append(title,sub);b.append(n,body);b.addEventListener("click",()=>{state.activeCase=c.id;renderCases();addMessage("CENÁRIO "+c.id+" · "+c.title+"\n\nEsperado: "+c.expected,"bot");send(c.prompt)});root.append(b)})}
+function report(){return{project:"Studio Joice AI",version:"Laboratório V1.0",generatedAt:new Date().toISOString(),mode:"respostas simuladas; sem API",summary:{approved:Object.values(state.ratings).filter(x=>x==="approved").length,partial:Object.values(state.ratings).filter(x=>x==="partial").length,failed:Object.values(state.ratings).filter(x=>x==="failed").length},generalNotes:$("#generalNotes").value,cases:cases.map(c=>({id:c.id,title:c.title,prompt:c.prompt,expected:c.expected,rating:state.ratings[c.id]||"not_tested"})),conversation:state.turns.map(({controls,...r})=>r)}}
+$("#form").addEventListener("submit",e=>{e.preventDefault();send(input.value)});
+$("#quick").addEventListener("click",e=>{const b=e.target.closest("[data-prompt]");if(b)send(b.dataset.prompt)});
+$("#exportBtn").addEventListener("click",()=>{const blob=new Blob([JSON.stringify(report(),null,2)],{type:"application/json"});const url=URL.createObjectURL(blob);const a=document.createElement("a");a.href=url;a.download="studio-joice-ai-relatorio-"+new Date().toISOString().slice(0,10)+".json";a.click();URL.revokeObjectURL(url);toast("Relatório preparado para exportação.")});
+$("#copyBtn").addEventListener("click",async()=>{const r=report();const summary="Studio Joice AI · Relatório V1\nAprovadas: "+r.summary.approved+"\nIncompletas: "+r.summary.partial+"\nReprovadas: "+r.summary.failed+"\n\n"+cases.map(c=>c.id+" "+c.title+": "+(state.ratings[c.id]||"não testado")).join("\n")+"\n\nObservações: "+r.generalNotes;try{await navigator.clipboard.writeText(summary);toast("Resumo copiado.")}catch(e){toast("Use Exportar relatório JSON para salvar os resultados.")}});
+$("#resetBtn").addEventListener("click",()=>{if(!confirm("Limpar as avaliações e conversas desta sessão?"))return;state.ratings={};state.activeCase=null;state.turns=[];$("#generalNotes").value="";messages.replaceChildren();addMessage("Olá! Seja bem-vinda ao Studio Joice Sousa. ✨\n\nVocê já utiliza Mega Hair ou está pensando em colocar pela primeira vez?","bot");renderStats();renderCases();save();toast("Sessão reiniciada.")});
+try{const saved=JSON.parse(localStorage.getItem("studioJoiceLabV1")||"null");if(saved){state.ratings=saved.ratings||{};state.activeCase=saved.activeCase||null;$("#generalNotes").value=saved.notes||"";state.turns=(saved.turns||[]).map(x=>({...x}));state.turns.forEach(r=>{addMessage(r.prompt,"user");addMessage(r.response,"bot",r);if(r.rating){const btn=r.controls?.querySelector('[data-rate="'+r.rating+'"]');if(btn)btn.classList.add("selected")}});}}catch(e){}
+renderStats();renderCases();
+</script>
+</body>
+</html>
