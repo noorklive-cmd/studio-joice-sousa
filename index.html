@@ -2255,7 +2255,40 @@
       .map-info p { font-size: 11px; }
       .map-cta { padding: 10px 13px; }
     }
-  </style>
+  
+  /* ASSISTENTE JR */
+  .jr-widget { position: fixed; right: 20px; bottom: 20px; z-index: 100; display: grid; justify-items: end; gap: 12px; }
+  .jr-launcher { min-height: 52px; padding: 0 18px; border: 1px solid rgba(215,181,106,.65); border-radius: 999px; background: #17130d; color: var(--gold-light); box-shadow: 0 18px 42px rgba(0,0,0,.42); cursor: pointer; font-size: 12px; font-weight: 700; letter-spacing: .04em; }
+  .jr-launcher:hover { transform: translateY(-2px); }
+  .jr-panel { width: min(390px, calc(100vw - 28px)); height: min(580px, calc(100dvh - 100px)); display: none; overflow: hidden; border: 1px solid rgba(215,181,106,.35); border-radius: 22px; background: #151411; box-shadow: 0 24px 80px rgba(0,0,0,.6); }
+  .jr-panel.is-open { display: flex; flex-direction: column; animation: jr-rise .2s ease-out; }
+  @keyframes jr-rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+  .jr-head { display: flex; align-items: center; gap: 11px; padding: 15px 16px; border-bottom: 1px solid var(--line); }
+  .jr-mark { width: 34px; height: 34px; display: grid; place-items: center; border-radius: 50%; background: var(--gold); color: #17130d; font-family: "Playfair Display", serif; font-weight: 700; }
+  .jr-head-copy { flex: 1; min-width: 0; }
+  .jr-head-copy strong, .jr-head-copy small { display: block; }
+  .jr-head-copy strong { font-size: 13px; }
+  .jr-head-copy small { margin-top: 2px; color: var(--muted); font-size: 10px; }
+  .jr-close { width: 32px; height: 32px; border: 0; border-radius: 50%; background: transparent; color: var(--text); cursor: pointer; font-size: 21px; }
+  .jr-close:hover { background: rgba(255,255,255,.08); }
+  .jr-messages { flex: 1; display: flex; flex-direction: column; gap: 10px; overflow: auto; padding: 16px; }
+  .jr-message { max-width: 88%; padding: 10px 12px; border-radius: 14px; font-size: 12px; line-height: 1.55; white-space: pre-wrap; }
+  .jr-message.bot { align-self: flex-start; border-bottom-left-radius: 4px; background: rgba(255,255,255,.07); color: #e9e2d5; }
+  .jr-message.user { align-self: flex-end; border-bottom-right-radius: 4px; background: var(--gold); color: #211a10; }
+  .jr-quick { display: flex; flex-wrap: wrap; gap: 7px; padding: 0 14px 12px; }
+  .jr-quick button { border: 1px solid rgba(215,181,106,.35); border-radius: 999px; background: transparent; color: var(--gold-light); padding: 7px 10px; cursor: pointer; font-size: 10px; }
+  .jr-quick button:hover { background: rgba(215,181,106,.12); }
+  .jr-quick a { display: inline-flex; align-items: center; border: 1px solid rgba(215,181,106,.35); border-radius: 999px; color: var(--gold-light); padding: 7px 10px; font-size: 10px; }
+  .jr-quick a:hover { background: rgba(215,181,106,.12); }
+  .jr-form { display: flex; gap: 8px; padding: 12px; border-top: 1px solid var(--line); }
+  .jr-form input { min-width: 0; flex: 1; border: 1px solid rgba(255,255,255,.16); border-radius: 999px; background: rgba(255,255,255,.04); color: var(--text); outline: none; padding: 10px 13px; font: inherit; font-size: 12px; }
+  .jr-form input:focus { border-color: var(--gold); }
+  .jr-send { width: 40px; border: 0; border-radius: 50%; background: var(--gold); color: #17130d; cursor: pointer; font-weight: 800; }
+  .jr-note { padding: 0 15px 11px; color: #89847b; text-align: center; font-size: 9px; }
+  @media (max-width: 680px) { .jr-widget { right: 14px; bottom: 14px; } .jr-panel { height: min(560px, calc(100dvh - 82px)); } .jr-launcher { min-height: 48px; } }
+  @media (prefers-reduced-motion: reduce) { .jr-panel.is-open { animation: none; } }
+
+</style>
 </head>
 
 <body>
@@ -3626,6 +3659,81 @@
 
   })();
 
+</script>
+
+
+<div class="jr-widget" aria-label="Assistente JR">
+  <section class="jr-panel" id="jrPanel" aria-label="Conversa com o Assistente JR" aria-hidden="true">
+    <div class="jr-head">
+      <div class="jr-mark" aria-hidden="true">JR</div>
+      <div class="jr-head-copy"><strong>Assistente JR</strong><small>Atendimento virtual do Studio Joice Sousa</small></div>
+      <button class="jr-close" id="jrClose" type="button" aria-label="Fechar conversa">×</button>
+    </div>
+    <div class="jr-messages" id="jrMessages" aria-live="polite">
+      <div class="jr-message bot">Olá! Sou o Assistente JR. Posso ajudar com técnicas, manutenção, avaliação ou contato com a equipe.</div>
+    </div>
+    <div class="jr-quick" id="jrQuick">
+      <button type="button" data-jr-question="Quais técnicas vocês trabalham?">Técnicas</button>
+      <button type="button" data-jr-question="Quando faço manutenção?">Manutenção</button>
+      <button type="button" data-jr-question="Quero uma avaliação.">Avaliação</button>
+      <a href="https://wa.me/5511980345487?text=Ol%C3%A1%2C%20quero%20falar%20com%20a%20equipe%20do%20Studio%20Joice%20Sousa." target="_blank" rel="noopener">Falar no WhatsApp</a>
+    </div>
+    <form class="jr-form" id="jrForm">
+      <input id="jrInput" type="text" autocomplete="off" placeholder="Escreva sua mensagem" aria-label="Escreva sua mensagem">
+      <button class="jr-send" type="submit" aria-label="Enviar mensagem">↑</button>
+    </form>
+    <p class="jr-note">Informações sujeitas à confirmação da equipe.</p>
+  </section>
+  <button class="jr-launcher" id="jrLauncher" type="button" aria-expanded="false" aria-controls="jrPanel">Falar com Assistente JR</button>
+</div>
+<script>
+(() => {
+  const panel = document.getElementById("jrPanel");
+  const launcher = document.getElementById("jrLauncher");
+  const close = document.getElementById("jrClose");
+  const messages = document.getElementById("jrMessages");
+  const form = document.getElementById("jrForm");
+  const input = document.getElementById("jrInput");
+  const quick = document.getElementById("jrQuick");
+  if (!panel || !launcher || !close || !messages || !form || !input || !quick) return;
+  const setOpen = (open) => {
+    panel.classList.toggle("is-open", open);
+    panel.setAttribute("aria-hidden", String(!open));
+    launcher.setAttribute("aria-expanded", String(open));
+    if (open) input.focus();
+  };
+  const add = (text, role) => {
+    const item = document.createElement("div");
+    item.className = "jr-message " + role;
+    item.textContent = text;
+    messages.appendChild(item);
+    messages.scrollTop = messages.scrollHeight;
+  };
+  const answer = (question) => {
+    const q = question.toLocaleLowerCase("pt-BR");
+    if (/técnic|tecnic|fita|tela|queratina|cápsula|capsula/.test(q)) return "O Studio trabalha com Fita Adesiva, Tela (Ponto Americano), Queratina, Micro Cápsula e Nano Cápsula. A técnica ideal é definida após avaliação profissional.";
+    if (/manuten|prazo|retoque|retir/.test(q)) return "As referências de manutenção variam por técnica: Fita Adesiva, 45 a 60 dias; Ponto Americano, 50 a 70 dias; Queratina, Micro e Nano Cápsula, 60 a 90 dias. A equipe confirma a orientação para o seu caso.";
+    if (/valor|preço|preco|custa|orçamento|orcamento/.test(q)) return "Os valores publicados são referência de mão de obra e precisam ser confirmados pela equipe. O cabelo, quando aplicável, é cobrado à parte. Posso encaminhar você para uma avaliação pelo WhatsApp.";
+    if (/agenda|agend|avalia|marcar|horário|horario/.test(q)) return "A disponibilidade é confirmada pela Joice ou pela equipe. Para solicitar uma avaliação, fale pelo WhatsApp: +55 11 98034-5487.";
+    if (/endereço|endereco|onde fica|localização|localizacao/.test(q)) return "O Studio fica na Rua Tamuatá, 354, São João Clímaco, São Paulo/SP. O atendimento publicado é de terça a sábado, das 10h às 19h.";
+    if (/pessoa|humano|joice|equipe|whatsapp/.test(q)) return "Claro. Use o botão “Falar no WhatsApp” abaixo para falar diretamente com a equipe.";
+    if (/sinal|pagamento|pix|cartão|cartao/.test(q)) return "As formas de pagamento e qualquer sinal são confirmados diretamente pela equipe. Não envie dados financeiros por aqui.";
+    if (/dor|alerg|saúde|saude|machuc|queda|problema/.test(q)) return "Sinto muito que esteja passando por isso. A equipe pode orientar o próximo passo, mas não é seguro avaliar uma condição por aqui. Fale diretamente com o Studio pelo WhatsApp.";
+    return "Posso ajudar com técnicas, manutenção, avaliação ou contato com a equipe. Qual desses assuntos você quer ver?";
+  };
+  const send = (value) => {
+    const text = value.trim();
+    if (!text) return;
+    add(text, "user");
+    input.value = "";
+    window.setTimeout(() => add(answer(text), "bot"), 180);
+  };
+  launcher.addEventListener("click", () => setOpen(!panel.classList.contains("is-open")));
+  close.addEventListener("click", () => setOpen(false));
+  form.addEventListener("submit", (event) => { event.preventDefault(); send(input.value); });
+  quick.addEventListener("click", (event) => { const button = event.target.closest("[data-jr-question]"); if (button) send(button.dataset.jrQuestion); });
+  document.addEventListener("keydown", (event) => { if (event.key === "Escape" && panel.classList.contains("is-open")) setOpen(false); });
+})();
 </script>
 
 </body>
