@@ -2278,6 +2278,8 @@
   .jr-quick { display: flex; flex-wrap: wrap; gap: 7px; padding: 0 14px 12px; }
   .jr-quick button { border: 1px solid rgba(215,181,106,.35); border-radius: 999px; background: transparent; color: var(--gold-light); padding: 7px 10px; cursor: pointer; font-size: 10px; }
   .jr-quick button:hover { background: rgba(215,181,106,.12); }
+  .jr-quick a { display: inline-flex; align-items: center; border: 1px solid rgba(215,181,106,.35); border-radius: 999px; color: var(--gold-light); padding: 7px 10px; font-size: 10px; }
+  .jr-quick a:hover { background: rgba(215,181,106,.12); }
   .jr-form { display: flex; gap: 8px; padding: 12px; border-top: 1px solid var(--line); }
   .jr-form input { min-width: 0; flex: 1; border: 1px solid rgba(255,255,255,.16); border-radius: 999px; background: rgba(255,255,255,.04); color: var(--text); outline: none; padding: 10px 13px; font: inherit; font-size: 12px; }
   .jr-form input:focus { border-color: var(--gold); }
@@ -3674,7 +3676,7 @@
       <button type="button" data-jr-question="Quais técnicas vocês trabalham?">Técnicas</button>
       <button type="button" data-jr-question="Quando faço manutenção?">Manutenção</button>
       <button type="button" data-jr-question="Quero uma avaliação.">Avaliação</button>
-      <button type="button" data-jr-question="Quero falar com uma pessoa.">Falar com a equipe</button>
+      <a href="https://wa.me/5511980345487?text=Ol%C3%A1%2C%20quero%20falar%20com%20a%20equipe%20do%20Studio%20Joice%20Sousa." target="_blank" rel="noopener">Falar no WhatsApp</a>
     </div>
     <form class="jr-form" id="jrForm">
       <input id="jrInput" type="text" autocomplete="off" placeholder="Escreva sua mensagem" aria-label="Escreva sua mensagem">
@@ -3714,7 +3716,8 @@
     if (/valor|preço|preco|custa|orçamento|orcamento/.test(q)) return "Os valores publicados são referência de mão de obra e precisam ser confirmados pela equipe. O cabelo, quando aplicável, é cobrado à parte. Posso encaminhar você para uma avaliação pelo WhatsApp.";
     if (/agenda|agend|avalia|marcar|horário|horario/.test(q)) return "A disponibilidade é confirmada pela Joice ou pela equipe. Para solicitar uma avaliação, fale pelo WhatsApp: +55 11 98034-5487.";
     if (/endereço|endereco|onde fica|localização|localizacao/.test(q)) return "O Studio fica na Rua Tamuatá, 354, São João Clímaco, São Paulo/SP. O atendimento publicado é de terça a sábado, das 10h às 19h.";
-    if (/pessoa|humano|joice|equipe|whatsapp/.test(q)) return "Claro. Você pode falar diretamente com a equipe pelo WhatsApp: +55 11 98034-5487.";
+    if (/pessoa|humano|joice|equipe|whatsapp/.test(q)) return "Claro. Use o botão “Falar no WhatsApp” abaixo para falar diretamente com a equipe.";
+    if (/sinal|pagamento|pix|cartão|cartao/.test(q)) return "As formas de pagamento e qualquer sinal são confirmados diretamente pela equipe. Não envie dados financeiros por aqui.";
     if (/dor|alerg|saúde|saude|machuc|queda|problema/.test(q)) return "Sinto muito que esteja passando por isso. A equipe pode orientar o próximo passo, mas não é seguro avaliar uma condição por aqui. Fale diretamente com o Studio pelo WhatsApp.";
     return "Posso ajudar com técnicas, manutenção, avaliação ou contato com a equipe. Qual desses assuntos você quer ver?";
   };
